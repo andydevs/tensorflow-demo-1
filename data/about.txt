@@ -4,6 +4,6 @@ Society Field Guide to North American Mushrooms (1981). Each species is identifi
 definitely edible, definitely poisonous, or of unknown edibility and not recommended. 
 This latter class was combined with the poisonous one. The Guide clearly states that 
 there is no simple rule for determining the edibility of a mushroom; no rule like 
-"leaflets three, let it be'' for Poisonous Oak and Ivy.
+"leaflets three, let it be" for Poisonous Oak and Ivy.
 
 This dataset was originally donated to the UCI Machine Learning repository on 27 April 1987
