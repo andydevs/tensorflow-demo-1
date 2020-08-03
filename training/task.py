@@ -8,6 +8,7 @@
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
 import argparse
+from . import data
 
 if __name__ == '__main__':
-    pass
+    print(data.prepare_train_test_data())

@@ -1,7 +1,10 @@
 {
-    "classes": {
-        "p": "poisonous",
-        "e": "edible"
+    "output": {
+        "column": "class",
+        "labels": {
+            "p": "poisonous",
+            "e": "edible"
+        }
     },
     "features": {
         "cap-shape": {
