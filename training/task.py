@@ -8,7 +8,19 @@
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
 import argparse
-from . import data
+from .model import model
+from .data import prepare_train_test_data
 
+# Main function
 if __name__ == '__main__':
-    print(data.prepare_train_test_data())
+    # Get training and testing data
+    train_labels, train_features, test_labels, test_features = prepare_train_test_data()
+
+    # Train model on training data
+    print('Training...')
+    model.fit(train_features, train_labels, epochs=10)
+
+    # Evaluate model on test data
+    print('Evaluating...')
+    loss, accuracy = model.evaluate(test_features, test_labels)
+    print('Accuracy:', accuracy)

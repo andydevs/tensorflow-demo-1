@@ -36,7 +36,7 @@ def get_input_output_size():
         output_size = len(d['output']['labels'].keys())
 
     # Return input and output size
-    input_size, output_size
+    return input_size, output_size
 
 
 def prepare_dataset(dataframe, dictionary, label_encoder, feature_encoder):
