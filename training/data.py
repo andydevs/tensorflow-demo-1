@@ -80,7 +80,7 @@ def prepare_train_test_data(train_frac=0.8):
     data = pd.read_csv(f'{data_directory}/{data_filename}')
 
     # Create scikit learn encoders
-    labels = data[label_name].values.reshape(-1,1)
+    labels = data[label_name].values.reshape(-1, 1)
     label_encoder = OneHotEncoder(categories=[label_classes])
     label_encoder.fit(labels)
     features = data[feature_names].values
@@ -96,10 +96,10 @@ def prepare_train_test_data(train_frac=0.8):
         label_encoder=label_encoder, 
         feature_encoder=feature_encoder)
     test_labels, test_features = prepare_dataset(
-        dataframe=training, 
+        dataframe=testing, 
         dictionary=dictionary, 
         label_encoder=label_encoder, 
         feature_encoder=feature_encoder)
 
     # Return all this
-    return (train_labels, train_features, test_labels, test_features)
+    return train_labels, train_features, test_labels, test_features
