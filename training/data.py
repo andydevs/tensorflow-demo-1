@@ -45,11 +45,15 @@ def get_feature_columns():
     return feature_columns
 
 
+def get_output_size():
+    output = get_output()
+    return len(output['labels'].keys())
+
+
 def one_hot_encode_labels(series):
     # Get label names
     output = get_output()
     labels = sorted(output['labels'].keys())
-    print(labels)
 
     # Get array from series
     array = series.values
@@ -57,11 +61,9 @@ def one_hot_encode_labels(series):
     # Map labels to indeces
     indexer = np.vectorize(lambda y: labels.index(y))
     indeces = indexer(array)
-    print(indeces)
 
     # Create a identity matrix for one-hot-assignment
     one_hot_matrix = np.identity(len(labels))
-    print(one_hot_matrix)
 
     # Map indeces to one-hot vectors
     one_hot_labels = np.apply_along_axis(
@@ -71,13 +73,19 @@ def one_hot_encode_labels(series):
     return one_hot_labels
 
 
+def dictionary_encode_features(dataframe):
+    # Map features to a dictionary of arrays
+    return dataframe.to_dict('series')
+
+
 def process_dataset(dataset):
     features = get_features()
     output = get_output()
     labels = dataset[output['column']]
     features = dataset[features.keys()]
     one_hot_labels = one_hot_encode_labels(labels)
-    return one_hot_labels, features
+    dictionary_features = dictionary_encode_features(features)
+    return one_hot_labels, dictionary_features
 
 
 def get_train_test_data(train_frac=0.8):
