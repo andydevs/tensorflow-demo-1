@@ -9,12 +9,12 @@
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 import numpy as np
-import json
+import yaml
 
 # Data parameters
 data_directory = 'data'
 data_filename = 'mushrooms.csv'
-dict_filename = 'dictionary.json'
+dict_filename = 'dictionary.yaml'
 
 
 def get_input_output_size():
@@ -23,7 +23,7 @@ def get_input_output_size():
     from dictionary of categories and labels
     """
     with open(f'{data_directory}/{dict_filename}') as f:
-        d = json.load(f)
+        d = yaml.full_load(f)
 
         # Size of input vector to ML model
         input_size = sum(
@@ -70,7 +70,7 @@ def prepare_train_test_data(train_frac=0.8):
     # Read dictionary from json file
     dictionary = {}
     with open(f'{data_directory}/{dict_filename}') as f:
-        dictionary = json.load(f)
+        dictionary = yaml.full_load(f)
     feature_names = list(dictionary['features'].keys())
     feature_categories = [list(feature.keys()) for feature in dictionary['features'].values()]
     label_name = dictionary['output']['column']
