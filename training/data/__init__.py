@@ -10,6 +10,7 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 import numpy as np
 import yaml
+from . import dictionary
 
 # Data parameters
 data_directory = 'data'
@@ -17,7 +18,6 @@ data_filename = 'mushrooms.csv'
 dict_filename = 'dictionary.yaml'
 
 
-# Input and output sizes
 with open(f'{data_directory}/{dict_filename}') as f:
     # Read dictionary
     d = yaml.full_load(f)

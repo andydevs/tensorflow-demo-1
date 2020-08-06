@@ -1,4 +1,3 @@
----
 # Demonstrating creating a training 
 # application using Tensorflow.
 #
@@ -8,153 +7,178 @@
 #
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
+---
+!DataDictionary
 
 # Output labels and name of column
-output:
+output: !Output
     column: class
-    labels:
-        e: edible
-        p: poisonous
+    labels: !CategorySet
+        categories:
+            e: edible
+            p: poisonous
 
 # Outline categories for each feature
-features:
-    bruises:
-        f: 'no'
-        t: bruises
-    cap-color:
-        b: buff
-        c: cinnamon
-        e: red
-        g: gray
-        n: brown
-        p: pink
-        r: green
-        u: purple
-        w: white
-        y: yellow
-    cap-shape:
-        b: bell
-        c: conical
-        f: flat
-        k: knobbed
-        s: sunken
-        x: convex
-    cap-surface:
-        f: fibrous
-        g: grooves
-        s: smooth
-        y: scaly
-    gill-attachment:
-        a: attached
-        d: descending
-        f: free
-        n: notched
-    gill-color:
-        b: buff
-        e: red
-        g: gray
-        h: chocolate
-        k: black
-        n: brown
-        o: orange
-        p: pink
-        r: green
-        u: purple
-        w: white
-        y: yellow
-    gill-size:
-        b: broad
-        n: narrow
-    gill-spacing:
-        c: close
-        d: distant
-        w: crowded
-    odor:
-        a: almond
-        c: creosote
-        f: foul
-        l: anise
-        m: musty
-        n: none
-        p: pungent
-        s: spicy
-        y: fishy
-    population:
-        a: abundant
-        c: clustered
-        n: numerous
-        s: scattered
-        v: several
-        y: solitary
-    ring-number:
-        n: none
-        o: one
-        t: two
-    ring-type:
-        c: cobwebby
-        e: evanescent
-        f: flaring
-        l: large
-        n: none
-        p: pendant
-        s: sheathing
-        z: zone
-    spore-print-color:
-        b: buff
-        h: chocolate
-        k: black
-        n: brown
-        o: orange
-        r: green
-        u: purple
-        w: white
-        y: yellow
-    stalk-color-above-ring:
-        b: buff
-        c: cinnamon
-        e: red
-        g: gray
-        n: brown
-        o: orange
-        p: pink
-        w: white
-        y: yellow
-    stalk-color-below-ring:
-        b: buff
-        c: cinnamon
-        e: red
-        g: gray
-        n: brown
-        o: orange
-        p: pink
-        w: white
-        y: yellow
-    stalk-root:
-        '?': missing
-        b: bulbous
-        c: club
-        e: equal
-        r: rooted
-        u: cup
-        z: rhizomorphs
-    stalk-shape:
-        e: enlarging
-        t: tapering
-    stalk-surface-above-ring:
-        f: fibrous
-        k: silky
-        s: smooth
-        y: scaly
-    stalk-surface-below-ring:
-        f: fibrous
-        k: silky
-        s: smooth
-        y: scaly
-    veil-color:
-        n: brown
-        o: orange
-        w: white
-        y: yellow
-    veil-type:
-        p: partial
-        u: universal
+features: !FeatureSet
+    features:
+        bruises: !CategorySet
+            categories:
+                f: 'no'
+                t: bruises
+        cap-color: !CategorySet
+            categories:
+                b: buff
+                c: cinnamon
+                e: red
+                g: gray
+                n: brown
+                p: pink
+                r: green
+                u: purple
+                w: white
+                y: yellow
+        cap-shape: !CategorySet
+            categories:
+                b: bell
+                c: conical
+                f: flat
+                k: knobbed
+                s: sunken
+                x: convex
+        cap-surface: !CategorySet
+            categories:
+                f: fibrous
+                g: grooves
+                s: smooth
+                y: scaly
+        gill-attachment: !CategorySet
+            categories:
+                a: attached
+                d: descending
+                f: free
+                n: notched
+        gill-color: !CategorySet
+            categories:
+                b: buff
+                e: red
+                g: gray
+                h: chocolate
+                k: black
+                n: brown
+                o: orange
+                p: pink
+                r: green
+                u: purple
+                w: white
+                y: yellow
+        gill-size: !CategorySet
+            categories:
+                b: broad
+                n: narrow
+        gill-spacing: !CategorySet
+            categories:
+                c: close
+                d: distant
+                w: crowded
+        odor: !CategorySet
+            categories:
+                a: almond
+                c: creosote
+                f: foul
+                l: anise
+                m: musty
+                n: none
+                p: pungent
+                s: spicy
+                y: fishy
+        population: !CategorySet
+            categories:
+                a: abundant
+                c: clustered
+                n: numerous
+                s: scattered
+                v: several
+                y: solitary
+        ring-number: !CategorySet
+            categories:
+                n: none
+                o: one
+                t: two
+        ring-type: !CategorySet
+            categories:
+                c: cobwebby
+                e: evanescent
+                f: flaring
+                l: large
+                n: none
+                p: pendant
+                s: sheathing
+                z: zone
+        spore-print-color: !CategorySet
+            categories:
+                b: buff
+                h: chocolate
+                k: black
+                n: brown
+                o: orange
+                r: green
+                u: purple
+                w: white
+                y: yellow
+        stalk-color-above-ring: !CategorySet
+            categories:
+                b: buff
+                c: cinnamon
+                e: red
+                g: gray
+                n: brown
+                o: orange
+                p: pink
+                w: white
+                y: yellow
+        stalk-color-below-ring: !CategorySet
+            categories:
+                b: buff
+                c: cinnamon
+                e: red
+                g: gray
+                n: brown
+                o: orange
+                p: pink
+                w: white
+                y: yellow
+        stalk-root: !CategorySet
+            categories:
+                '?': missing
+                b: bulbous
+                c: club
+                e: equal
+                r: rooted
+                u: cup
+                z: rhizomorphs
+        stalk-shape: !CategorySet
+            categories:
+                e: enlarging
+                t: tapering
+        stalk-surface-above-ring: !CategorySet
+            categories:
+                f: fibrous
+                k: silky
+                s: smooth
+                y: scaly
+        stalk-surface-below-ring: !CategorySet
+            categories:
+                f: fibrous
+                k: silky
+                s: smooth
+                y: scaly
+        veil-color: !CategorySet
+            categories:
+                n: brown
+                o: orange
+                w: white
+                y: yellow
+        veil-type: !CategorySet
+            categories:
+                p: partial
+                u: universal
