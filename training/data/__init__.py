@@ -10,40 +10,27 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 import numpy as np
 import yaml
-from . import dictionary
+from . import parsing
 
 # Data parameters
 data_directory = 'data'
 data_filename = 'mushrooms.csv'
 dict_filename = 'dictionary.yaml'
 
-
+# Read dictionary
 with open(f'{data_directory}/{dict_filename}') as f:
-    # Read dictionary
-    d = yaml.full_load(f)
+    dictionary = yaml.full_load(f)
 
-    # Size of input vector to ML model
-    input_size = sum(
-        len(feature.keys())
-        for feature in
-        d['features'].values()
-    )
+# Create One-Hot Encoders
+label_encoder = OneHotEncoder(categories=[dictionary.output.labels.names])
+feature_encoder = OneHotEncoder(categories=dictionary.features.categories)
 
-    # Size of output vector in ML model
-    output_size = len(d['output']['labels'].keys())
-
-    # Fit one hot encoders
-    label_column = d['output']['column']
-    feature_columns = list(d['features'].keys())
-    label_classes = list(d['output']['labels'].keys())
-    feature_categories = [list(feature.keys()) for feature in d['features'].values()]
-    label_encoder = OneHotEncoder(categories=[label_classes])
-    feature_encoder = OneHotEncoder(categories=feature_categories)
-    df = pd.read_csv(f'{data_directory}/{data_filename}')
-    labels = df[label_column].values.reshape(-1,1)
-    features = df[feature_columns].values
-    label_encoder.fit(labels)
-    feature_encoder.fit(features)
+# "Fit" the one hot encoders for some odd reason
+df = pd.read_csv(f'{data_directory}/{data_filename}')
+labels = df[dictionary.output.column].values.reshape(-1,1)
+features = df[dictionary.features.columns].values
+label_encoder.fit(labels)
+feature_encoder.fit(features)
 
 
 def prepare_dataset(dataframe):
@@ -52,8 +39,8 @@ def prepare_dataset(dataframe):
     encode them into one-hot representation
     """
     # Split data into labels and features
-    labels = dataframe[label_column].values.reshape(-1,1)
-    features = dataframe[feature_columns].values
+    labels = dataframe[dictionary.output.column].values.reshape(-1,1)
+    features = dataframe[dictionary.features.columns].values
 
     # Map features into one-hot vectors
     encoded_labels = label_encoder.transform(labels).toarray()

@@ -3,7 +3,8 @@
 #
 # This file cleanly loads the data
 # dictionary (stored in the .yaml
-# file) to be used in the data pipeline
+# file) as objects to be used in 
+# the data pipeline
 #
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
@@ -55,6 +56,13 @@ class Output(yaml.YAMLObject):
         """
         return f'Output(column={self.column}, labels={self.labels})'
 
+    @property
+    def size(self):
+        """
+        Total output size
+        """
+        return len(self.labels)
+
 
 class FeatureSet(yaml.YAMLObject):
     """
@@ -76,6 +84,27 @@ class FeatureSet(yaml.YAMLObject):
         """
         return f'FeatureSet(features={self.features})'
 
+    @property
+    def size(self):
+        """
+        Total input size of feature set in ML model
+        """
+        return sum(len(feature) for feature in self.features.values())
+
+    @property
+    def categories(self):
+        """
+        Return all categories for all features
+        """
+        return [ feature.names for feature in self.features.values() ]
+
+    @property
+    def columns(self):
+        """
+        Return names of columns for all features
+        """
+        return list(self.features.keys())
+
 
 class CategorySet(yaml.YAMLObject):
     """
@@ -91,6 +120,18 @@ class CategorySet(yaml.YAMLObject):
         """
         self.categories = categories
 
+    def __repr__(self):
+        """
+        Detailed string representation
+        """
+        return f'CategorySet(categories={self.categories})'
+
+    def __len__(self):
+        """
+        Total number of categories in set
+        """
+        return len(self.categories.items())
+
     @property
     def catstring(self):
         """
@@ -98,8 +139,9 @@ class CategorySet(yaml.YAMLObject):
         """
         return ', '.join(f'{key}={value}' for key, value in self.categories.items())
 
-    def __repr__(self):
+    @property
+    def names(self):
         """
-        Detailed string representation
+        List of category names
         """
-        return f'CategorySet(categories={self.categories})'
+        return list(self.categories.keys())
