@@ -11,6 +11,9 @@ import argparse
 from .model import model
 from .data import prepare_train_test_data
 
+# Model file name
+model_filename = 'models/saved-model.h5'
+
 # Main function
 if __name__ == '__main__':
     # Get training and testing data
@@ -22,5 +25,9 @@ if __name__ == '__main__':
 
     # Evaluate model on test data
     print('Evaluating...')
-    loss, accuracy = model.evaluate(test_features, test_labels)
+    _, accuracy = model.evaluate(test_features, test_labels)
     print('Accuracy:', accuracy)
+
+    # Save model
+    print('Saving...')
+    model.save(model_filename)
