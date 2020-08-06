@@ -16,22 +16,18 @@ if __name__ == "__main__":
     # Get model
     model = tf.keras.models.load_model('models/saved-model.h5')
 
-    # Read meta
-    with open('data/meta.yaml') as f:
-        d = yaml.full_load(f)
-
-    # Prompt for data point
+    # Prompt for each data point
     x = []
-    for name, categories in d['features'].items():
-        allowed_inputs = list(categories.keys())
-        category_string = ', '.join(f'{key}={value}' for key, value in categories.items())
-        value = input(f'{name} ({category_string}): ')
+    for name, feature in data.meta.features:
+        # Get value from user
+        value = input(f'{name} ({feature.catstring}): ')
         
-        while value not in allowed_inputs:
-            allowed_input_string = ', '.join(allowed_inputs)
-            print(f'{value} not one of allowed values ({allowed_input_string})')
-            value = input(f'{name} ({category_string}): ')
+        # Ask again if user doesn't give appropriate value
+        while value not in feature.values:
+            print(f'{value} not one of allowed values ({feature.values})')
+            value = input(f'{name} ({feature.catstring}): ')
         
+        # Append value to datapoint
         x.append(value)
 
     # Transform input and make prediction

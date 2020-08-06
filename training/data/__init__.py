@@ -22,7 +22,7 @@ with open(f'{data_directory}/{meta_filename}') as f:
     meta = yaml.full_load(f)
 
 # Create One-Hot Encoders
-label_encoder = OneHotEncoder(categories=[meta.output.labels.names])
+label_encoder = OneHotEncoder(categories=[meta.output.labels.values])
 feature_encoder = OneHotEncoder(categories=meta.features.categories)
 
 # "Fit" the one hot encoders for some odd reason

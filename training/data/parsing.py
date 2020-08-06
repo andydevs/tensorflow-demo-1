@@ -84,6 +84,12 @@ class FeatureSet(yaml.YAMLObject):
         """
         return f'FeatureSet(features={self.features})'
 
+    def __iter__(self):
+        """
+        Iterator over features
+        """
+        return iter(self.features.items())
+
     @property
     def size(self):
         """
@@ -96,7 +102,7 @@ class FeatureSet(yaml.YAMLObject):
         """
         Return all categories for all features
         """
-        return [ feature.names for feature in self.features.values() ]
+        return [ feature.values for feature in self.features.values() ]
 
     @property
     def columns(self):
@@ -140,8 +146,8 @@ class CategorySet(yaml.YAMLObject):
         return ', '.join(f'{key}={value}' for key, value in self.categories.items())
 
     @property
-    def names(self):
+    def values(self):
         """
-        List of category names
+        List of category values
         """
         return list(self.categories.keys())
