@@ -16,8 +16,8 @@ if __name__ == "__main__":
     # Get model
     model = tf.keras.models.load_model('models/saved-model.h5')
 
-    # Read dictionary
-    with open('data/dictionary.yaml') as f:
+    # Read meta
+    with open('data/meta.yaml') as f:
         d = yaml.full_load(f)
 
     # Prompt for data point

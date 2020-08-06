@@ -15,20 +15,20 @@ from . import parsing
 # Data parameters
 data_directory = 'data'
 data_filename = 'mushrooms.csv'
-dict_filename = 'dictionary.yaml'
+meta_filename = 'meta.yaml'
 
-# Read dictionary
-with open(f'{data_directory}/{dict_filename}') as f:
-    dictionary = yaml.full_load(f)
+# Read meta
+with open(f'{data_directory}/{meta_filename}') as f:
+    meta = yaml.full_load(f)
 
 # Create One-Hot Encoders
-label_encoder = OneHotEncoder(categories=[dictionary.output.labels.names])
-feature_encoder = OneHotEncoder(categories=dictionary.features.categories)
+label_encoder = OneHotEncoder(categories=[meta.output.labels.names])
+feature_encoder = OneHotEncoder(categories=meta.features.categories)
 
 # "Fit" the one hot encoders for some odd reason
 df = pd.read_csv(f'{data_directory}/{data_filename}')
-labels = df[dictionary.output.column].values.reshape(-1,1)
-features = df[dictionary.features.columns].values
+labels = df[meta.output.column].values.reshape(-1,1)
+features = df[meta.features.columns].values
 label_encoder.fit(labels)
 feature_encoder.fit(features)
 
@@ -39,8 +39,8 @@ def prepare_dataset(dataframe):
     encode them into one-hot representation
     """
     # Split data into labels and features
-    labels = dataframe[dictionary.output.column].values.reshape(-1,1)
-    features = dataframe[dictionary.features.columns].values
+    labels = dataframe[meta.output.column].values.reshape(-1,1)
+    features = dataframe[meta.features.columns].values
 
     # Map features into one-hot vectors
     encoded_labels = label_encoder.transform(labels).toarray()

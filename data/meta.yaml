@@ -1,9 +1,8 @@
 # Demonstrating creating a training 
 # application using Tensorflow.
 #
-# This file contains information
-# About the structure of the data
-# In terms of the problem statement
+# This file contains metadata about
+# the mushrooms.csv file
 #
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
