@@ -26,10 +26,12 @@ if __name__ == "__main__":
         allowed_inputs = list(categories.keys())
         category_string = ', '.join(f'{key}={value}' for key, value in categories.items())
         value = input(f'{name} ({category_string}): ')
+        
         while value not in allowed_inputs:
             allowed_input_string = ', '.join(allowed_inputs)
             print(f'{value} not one of allowed values ({allowed_input_string})')
             value = input(f'{name} ({category_string}): ')
+        
         x.append(value)
 
     # Transform input and make prediction
