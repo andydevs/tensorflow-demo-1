@@ -6,8 +6,7 @@
 #
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
----
-!DataDictionary
+--- !MetaData
 
 # Output labels and name of column
 output: !Output

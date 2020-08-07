@@ -11,15 +11,15 @@
 import yaml
 
 
-class DataDictionary(yaml.YAMLObject):
+class MetaData(yaml.YAMLObject):
     """
     Spec for data dictionary. Contains Features and Output
     """
-    yaml_tag = u'!DataDictionary'
+    yaml_tag = u'!MetaData'
 
     def __init__(self, output, features):
         """
-        DataDictionary initialization
+        MetaData initialization
 
         :param output:   output spec
         :param features: feature spec
@@ -31,7 +31,7 @@ class DataDictionary(yaml.YAMLObject):
         """
         String representation of object
         """
-        return f'DataDictionary(output={self.output}, features={self.features})'
+        return f'MetaData(output={self.output}, features={self.features})'
 
     def split_dataset(self, dataset):
         """
