@@ -9,7 +9,11 @@
     <h1>Is it Poisonous???</h1>
     <img src="" alt="A mushroom...">
     <div class="message">
-        
+        {% if message %}
+            <p class="message-class-{{ message_color }}">
+                {{ message }}
+            </p>
+        {% endif %}
     </div>
     <form action="/" method="POST">
         {{ form.csrf_token }}
