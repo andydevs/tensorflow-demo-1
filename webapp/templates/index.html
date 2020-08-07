@@ -1,108 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Is it Poisonous???</title>
-</head>
-<body>
-    <h1>Is it Poisonous???</h1>
-    <img src="" alt="A mushroom...">
-    <div class="message">
-        {% if message %}
-            <p class="message-class-{{ message_color }}">
-                {{ message }}
-            </p>
-        {% endif %}
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='custom.css')}}">
+{% endblock %}
+
+{% block title %}
+    Is it Poison???
+{% endblock %}
+
+{% block content %}
+    <div class='jumbotron jumbotron-fluid mushroom-tron'>
+        <div class='container p-3 little-black text-white'>
+            <h1 class='display-4'>Is it Poison?</h1>
+            <p class='lead'>Fill the form below to find out!</p>
+        </div>
     </div>
-    <form action="/" method="POST">
-        {{ form.csrf_token }}
-        <div class="form-input">
-			{{ form.bruises.label }}
-			{{ form.bruises() }}
-		</div>
-        <div class="form-input">
-			{{ form.cap_color.label }}
-			{{ form.cap_color() }}
-		</div>
-        <div class="form-input">
-			{{ form.cap_shape.label }}
-			{{ form.cap_shape() }}
-		</div>
-        <div class="form-input">
-			{{ form.cap_surface.label }}
-			{{ form.cap_surface() }}
-		</div>
-        <div class="form-input">
-			{{ form.gill_attachment.label }}
-			{{ form.gill_attachment() }}
-		</div>
-        <div class="form-input">
-			{{ form.gill_color.label }}
-			{{ form.gill_color() }}
-		</div>
-        <div class="form-input">
-			{{ form.gill_size.label }}
-			{{ form.gill_size() }}
-		</div>
-        <div class="form-input">
-			{{ form.gill_spacing.label }}
-			{{ form.gill_spacing() }}
-		</div>
-        <div class="form-input">
-			{{ form.odor.label }}
-			{{ form.odor() }}
-		</div>
-        <div class="form-input">
-			{{ form.population.label }}
-			{{ form.population() }}
-		</div>
-        <div class="form-input">
-			{{ form.ring_number.label }}
-			{{ form.ring_number() }}
-		</div>
-        <div class="form-input">
-			{{ form.ring_type.label }}
-			{{ form.ring_type() }}
-		</div>
-        <div class="form-input">
-			{{ form.spore_print_color.label }}
-			{{ form.spore_print_color() }}
-		</div>
-        <div class="form-input">
-			{{ form.stalk_color_above_ring.label }}
-			{{ form.stalk_color_above_ring() }}
-		</div>
-        <div class="form-input">
-			{{ form.stalk_color_below_ring.label }}
-			{{ form.stalk_color_below_ring() }}
-		</div>
-        <div class="form-input">
-			{{ form.stalk_root.label }}
-			{{ form.stalk_root() }}
-		</div>
-        <div class="form-input">
-			{{ form.stalk_shape.label }}
-			{{ form.stalk_shape() }}
-		</div>
-        <div class="form-input">
-			{{ form.stalk_surface_above_ring.label }}
-			{{ form.stalk_surface_above_ring() }}
-		</div>
-        <div class="form-input">
-			{{ form.stalk_surface_below_ring.label }}
-			{{ form.stalk_surface_below_ring() }}
-		</div>
-        <div class="form-input">
-			{{ form.veil_color.label }}
-			{{ form.veil_color() }}
-		</div>
-        <div class="form-input">
-			{{ form.veil_type.label }}
-			{{ form.veil_type() }}
-		</div>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+    <div class='container mb-3'>
+        <div class="my-3">
+            {% if message %}
+                <p class="message-class-{{ message_color }}">
+                    {{ message }}
+                </p>
+            {% endif %}
+        </div>
+        <form action="/" method="POST">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                {{ form.bruises.label }}
+                {{ form.bruises(class_='form-control') }}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    {{ form.cap_color.label }}
+                    {{ form.cap_color(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-4">
+                    {{ form.cap_shape.label }}
+                    {{ form.cap_shape(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-4">
+                    {{ form.cap_surface.label }}
+                    {{ form.cap_surface(class_='form-control') }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    {{ form.gill_attachment.label }}
+                    {{ form.gill_attachment(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-3">
+                    {{ form.gill_color.label }}
+                    {{ form.gill_color(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-3">
+                    {{ form.gill_size.label }}
+                    {{ form.gill_size(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-3">
+                    {{ form.gill_spacing.label }}
+                    {{ form.gill_spacing(class_='form-control') }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.odor.label }}
+                {{ form.odor(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                {{ form.population.label }}
+                {{ form.population(class_='form-control') }}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.ring_number.label }}
+                    {{ form.ring_number(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.ring_type.label }}
+                    {{ form.ring_type(class_='form-control') }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.spore_print_color.label }}
+                {{ form.spore_print_color(class_='form-control') }}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.stalk_color_above_ring.label }}
+                    {{ form.stalk_color_above_ring(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.stalk_color_below_ring.label }}
+                    {{ form.stalk_color_below_ring(class_='form-control') }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.stalk_root.label }}
+                    {{ form.stalk_root(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.stalk_shape.label }}
+                    {{ form.stalk_shape(class_='form-control') }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.stalk_surface_above_ring.label }}
+                    {{ form.stalk_surface_above_ring(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.stalk_surface_below_ring.label }}
+                    {{ form.stalk_surface_below_ring(class_='form-control') }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.veil_color.label }}
+                    {{ form.veil_color(class_='form-control') }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.veil_type.label }}
+                    {{ form.veil_type(class_='form-control') }}
+                </div>
+            </div>
+            <div class="form-row d-flex flex-row-reverse">
+                <button type="submit" class='mx-1 btn btn-lg btn-primary'>Submit</button>
+                <button type="reset" class='mx-1 btn btn-lg btn-secondary'>Reset</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -6,6 +6,7 @@
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
 from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
 from .form import DataForm
 from training.data import meta, feature_encoder, label_encoder
 from tensorflow.keras.models import load_model
@@ -16,6 +17,9 @@ import config
 # Application
 app = Flask(__name__)
 app.config.from_object('config')
+
+# Extensions
+Bootstrap(app)
 
 # Model
 model = load_model(f'{config.model_directory}/{config.model_filename}')
