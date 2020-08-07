@@ -5,7 +5,7 @@
 #
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
-from flask import Flask
+from flask import Flask, render_template
 
 # Application
 app = Flask(__name__)
@@ -16,4 +16,4 @@ def index():
     """
     Main page of the application
     """
-    return '<marquee>This page is being built</marquee>'
+    return render_template('index.html')
