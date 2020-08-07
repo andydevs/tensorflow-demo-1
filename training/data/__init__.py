@@ -27,8 +27,7 @@ feature_encoder = OneHotEncoder(categories=meta.features.categories)
 
 # "Fit" the one hot encoders for some odd reason
 df = pd.read_csv(f'{data_directory}/{data_filename}')
-labels = df[meta.output.column].values.reshape(-1,1)
-features = df[meta.features.columns].values
+labels, features = meta.split_dataset(df)
 label_encoder.fit(labels)
 feature_encoder.fit(features)
 
@@ -39,8 +38,7 @@ def prepare_dataset(dataframe):
     encode them into one-hot representation
     """
     # Split data into labels and features
-    labels = dataframe[meta.output.column].values.reshape(-1,1)
-    features = dataframe[meta.features.columns].values
+    labels, features = meta.split_dataset(df)
 
     # Map features into one-hot vectors
     encoded_labels = label_encoder.transform(labels).toarray()

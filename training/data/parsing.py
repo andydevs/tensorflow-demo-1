@@ -33,6 +33,16 @@ class DataDictionary(yaml.YAMLObject):
         """
         return f'DataDictionary(output={self.output}, features={self.features})'
 
+    def split_dataset(self, dataset):
+        """
+        Splits dataset into labels and features
+
+        :param dataset: dataset being split
+        """
+        labels = dataset[self.output.column].values.reshape(-1,1)
+        features = dataset[self.features.columns].values
+        return labels, features
+
 
 class Output(yaml.YAMLObject):
     """
