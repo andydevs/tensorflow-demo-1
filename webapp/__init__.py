@@ -6,6 +6,7 @@
 # Author:  Anshul Kharbanda
 # Created: 8 - 2 - 2020
 from flask import Flask, render_template
+from .form import DataForm
 
 # Application
 app = Flask(__name__)
