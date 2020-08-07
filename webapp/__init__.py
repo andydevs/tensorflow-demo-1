@@ -33,7 +33,7 @@ def index():
     # Create a form
     form = DataForm()
     message = None
-    message_color = None
+    message_type = None
 
     # Only if we're submitting a prediction
     if form.validate_on_submit():
@@ -53,13 +53,13 @@ def index():
         # Set message based on encoding
         if yHat == 'p':
             message = 'Looks like it\'s poisonous. Don\'t eat it!'
-            message_color = 'error'
+            message_type = 'danger'
         else:
             message = 'Looks safe to eat! Hope it\'s tasty.'
-            message_color = 'success'
+            message_type = 'success'
 
     # Render template
     return render_template('index.html',
         form=form,
         message=message,
-        message_color=message_color)
+        message_type=message_type)
