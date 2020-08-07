@@ -13,9 +13,10 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 # Main page route
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     """
     Main page of the application
     """
-    return render_template('index.html')
+    form = DataForm()
+    return render_template('index.html', form=form)

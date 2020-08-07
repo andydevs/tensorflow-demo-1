@@ -8,5 +8,97 @@
 <body>
     <h1>Is it Poisonous???</h1>
     <img src="" alt="A mushroom...">
+    <div class="message">
+        
+    </div>
+    <form action="/" method="POST">
+        {{ form.csrf_token }}
+        <div class="form-input">
+			{{ form.bruises.label }}
+			{{ form.bruises() }}
+		</div>
+        <div class="form-input">
+			{{ form.cap_color.label }}
+			{{ form.cap_color() }}
+		</div>
+        <div class="form-input">
+			{{ form.cap_shape.label }}
+			{{ form.cap_shape() }}
+		</div>
+        <div class="form-input">
+			{{ form.cap_surface.label }}
+			{{ form.cap_surface() }}
+		</div>
+        <div class="form-input">
+			{{ form.gill_attachment.label }}
+			{{ form.gill_attachment() }}
+		</div>
+        <div class="form-input">
+			{{ form.gill_color.label }}
+			{{ form.gill_color() }}
+		</div>
+        <div class="form-input">
+			{{ form.gill_size.label }}
+			{{ form.gill_size() }}
+		</div>
+        <div class="form-input">
+			{{ form.gill_spacing.label }}
+			{{ form.gill_spacing() }}
+		</div>
+        <div class="form-input">
+			{{ form.odor.label }}
+			{{ form.odor() }}
+		</div>
+        <div class="form-input">
+			{{ form.population.label }}
+			{{ form.population() }}
+		</div>
+        <div class="form-input">
+			{{ form.ring_number.label }}
+			{{ form.ring_number() }}
+		</div>
+        <div class="form-input">
+			{{ form.ring_type.label }}
+			{{ form.ring_type() }}
+		</div>
+        <div class="form-input">
+			{{ form.spore_print_color.label }}
+			{{ form.spore_print_color() }}
+		</div>
+        <div class="form-input">
+			{{ form.stalk_color_above_ring.label }}
+			{{ form.stalk_color_above_ring() }}
+		</div>
+        <div class="form-input">
+			{{ form.stalk_color_below_ring.label }}
+			{{ form.stalk_color_below_ring() }}
+		</div>
+        <div class="form-input">
+			{{ form.stalk_root.label }}
+			{{ form.stalk_root() }}
+		</div>
+        <div class="form-input">
+			{{ form.stalk_shape.label }}
+			{{ form.stalk_shape() }}
+		</div>
+        <div class="form-input">
+			{{ form.stalk_surface_above_ring.label }}
+			{{ form.stalk_surface_above_ring() }}
+		</div>
+        <div class="form-input">
+			{{ form.stalk_surface_below_ring.label }}
+			{{ form.stalk_surface_below_ring() }}
+		</div>
+        <div class="form-input">
+			{{ form.veil_color.label }}
+			{{ form.veil_color() }}
+		</div>
+        <div class="form-input">
+			{{ form.veil_type.label }}
+			{{ form.veil_type() }}
+		</div>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
