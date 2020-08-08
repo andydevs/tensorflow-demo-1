@@ -10,9 +10,7 @@
 import argparse
 from .model import model
 from .data import prepare_train_test_data
-
-# Model file name
-model_filename = 'models/saved-model.h5'
+import config
 
 # Main function
 if __name__ == '__main__':
@@ -30,4 +28,4 @@ if __name__ == '__main__':
 
     # Save model
     print('Saving...')
-    model.save(model_filename)
+    model.save(config.model_filename)

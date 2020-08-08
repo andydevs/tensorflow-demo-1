@@ -11,14 +11,10 @@ import pandas as pd
 import numpy as np
 import yaml
 from . import parsing
-
-# Data parameters
-data_directory = 'data'
-data_filename = 'mushrooms.csv'
-meta_filename = 'meta.yaml'
+import config
 
 # Read meta
-with open(f'{data_directory}/{meta_filename}') as f:
+with open(f'{config.data_directory}/{config.meta_filename}') as f:
     meta = yaml.full_load(f)
 
 # Create One-Hot Encoders
@@ -26,7 +22,7 @@ label_encoder = OneHotEncoder(categories=[meta.output.labels.values])
 feature_encoder = OneHotEncoder(categories=meta.features.categories)
 
 # "Fit" the one hot encoders for some odd reason
-df = pd.read_csv(f'{data_directory}/{data_filename}')
+df = pd.read_csv(f'{config.data_directory}/{config.data_filename}')
 labels, features = meta.split_dataset(df)
 label_encoder.fit(labels)
 feature_encoder.fit(features)
@@ -56,7 +52,7 @@ def prepare_train_test_data(train_frac=0.8):
     split into training and testing data.
     """
     # Reaed data from csv file
-    data = pd.read_csv(f'{data_directory}/{data_filename}')
+    data = pd.read_csv(f'{config.data_directory}/{config.data_filename}')
 
     # Split into training and testing data
     training = data.sample(frac=train_frac)
