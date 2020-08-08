@@ -28,4 +28,4 @@ if __name__ == '__main__':
 
     # Save model
     print('Saving...')
-    model.save(config.model_filename)
+    model.save(f'{config.model_directory}/{config.model_filename}')
