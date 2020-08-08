@@ -1,0 +1,5 @@
+{
+    "name": "Tensorflow Demo 1",
+    "description": "A demo for training and deploying Tensorflow models to the web",
+    "repository": "https://github.com/andydevs/tensorflow-demo-1"
+}
