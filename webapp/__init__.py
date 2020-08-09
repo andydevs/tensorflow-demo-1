@@ -7,11 +7,11 @@
 # Created: 8 - 2 - 2020
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
-from .form import DataForm
-from training.data import meta, feature_encoder, label_encoder
 from tensorflow.keras.models import load_model
 from re import sub
 import numpy as np
+from .form import DataForm
+from training.data import meta, feature_encoder, label_encoder
 import config
 
 # Application
