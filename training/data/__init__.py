@@ -44,7 +44,7 @@ def prepare_dataset(dataframe):
     return encoded_labels, encoded_features
 
 
-def prepare_train_test_data(train_frac=0.8):
+def prepare_train_test_data():
     """
     Read csv file, convert it to 
     machine learning representation, 
@@ -55,7 +55,7 @@ def prepare_train_test_data(train_frac=0.8):
     data = pd.read_csv(f'{config.data_directory}/{config.data_filename}')
 
     # Split into training and testing data
-    training = data.sample(frac=train_frac)
+    training = data.sample(frac=config.data_trainfrac)
     testing = data.drop(training.index)
     train_labels, train_features = prepare_dataset(training)
     test_labels, test_features = prepare_dataset(testing)

@@ -11,10 +11,11 @@
 SECRET_KEY = 'ivemadeaseverandcontinuouslapseinmyjudgement'
 WTF_CSRF_SECRET_KEY = 'andidontexpecttobeforgivenimsimplyheretoapologize'
 
-# Data files
+# Data system
 data_directory = 'data'
 data_filename = 'mushrooms.csv'
 meta_filename = 'meta.yaml'
+data_trainfrac = 0.8
 
 # Model file
 model_directory = 'models'
