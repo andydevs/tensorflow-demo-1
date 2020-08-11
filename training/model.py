@@ -12,6 +12,7 @@ from .data import meta
 model = tf.keras.models.Sequential([
     tf.keras.Input(shape=(meta.features.size,)),
     tf.keras.layers.Dense(16, activation='relu'),
+    tf.keras.layers.Dropout(0.2),
     tf.keras.layers.Dense(meta.output.size, activation='softmax')
 ])
 model.compile(
