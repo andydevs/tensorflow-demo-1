@@ -5,6 +5,15 @@ Tensorflow Demo 1
 
 Demonstrating creating a training application using Tensorflow.
 
+The Data
+----------------------------------------------------------------
+
+This project aims to predict if a mushroom is poisonous or not
+depending on various characteristics of the mushroom. The data
+is stored in the `data` directory, which contains the `mushrooms.csv`
+file, as well as a `meta.yaml` that outlines the structure of each
+feature (column) of the csv file.
+
 Developing
 ----------------------------------------------------------------
 
