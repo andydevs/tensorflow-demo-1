@@ -28,7 +28,7 @@ label_encoder.fit(labels)
 feature_encoder.fit(features)
 
 
-def prepare_dataset(dataframe):
+def split_encode_dataset(dataframe):
     """
     Split dataframe into feature and labels and 
     encode them into one-hot representation
@@ -57,8 +57,10 @@ def prepare_train_test_data():
     # Split into training and testing data
     training = data.sample(frac=config.data_trainfrac)
     testing = data.drop(training.index)
-    train_labels, train_features = prepare_dataset(training)
-    test_labels, test_features = prepare_dataset(testing)
+
+    # Split and encode training and testing datasets
+    train_labels, train_features = split_encode_dataset(training)
+    test_labels, test_features = split_encode_dataset(testing)
 
     # Return all this
     return train_labels, train_features, test_labels, test_features
